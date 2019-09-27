@@ -27,6 +27,7 @@
     "moment": "^2.20.1",
     "mongoose": "^5.0.2",
     "morgan": "^1.9.1",
+    "pug": "^2.0.4",
     "rc": "^1.2.8",
     "winston": "^2.4.0",
     "winston-mongodb": "^3.0.0"
