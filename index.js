@@ -1,3 +1,6 @@
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
+const config = require('config');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const Joi = require('joi');
@@ -5,11 +8,24 @@ const logger = require('./logger');
 const express = require('express');
 const app = express();
 
+
 app.use(express.json()); // parses body of REQ if there is a JSON object it populates -> req.body
 app.use(express.urlencoded({ extended: true })); // parses inc requests with URL encoded payloads // req.body -> key=value&key=value
 app.use(express.static('public')); // Used to serve static content
 app.use(helmet())
 app.use(morgan('tiny')); //logs the REQ in console and gives additional info
+
+// Configuration
+/* console.log(`Application Name: ${config.get('name')}`);
+console.log(`Mail Server: ${config.get('mail.host')}`);
+console.log(`Mail Password: ${config.get('mail.password')}`); */
+
+
+if (app.get('env') === 'development') {
+  app.use(morgan('tiny'));
+  startupDebugger('Morgan enabled...');
+
+}
 
 app.use(logger);
 
