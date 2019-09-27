@@ -1,7 +1,11 @@
 # Express---Vidly-NodeJS
 
 Backend project to familiarize myself with: 
-  - the express framework 
+  - The express framework
+    - Middleware
+    - Configuration
+    - Debugging
+    - Templating Engines
   - RESTful services
   - Synchronous & Asynchronous
   - Mongoose: 
