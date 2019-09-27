@@ -1,8 +1,14 @@
 const Joi = require('joi');
+const logger = require('./logger');
 const express = require('express');
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); // parses body of REQ if there is a JSON object it populates -> req.body
+app.use(express.urlencoded({ extended: true })); // parses inc requests with URL encoded payloads // req.body -> key=value&key=value
+app.use(express.static('public')); // Used to serve static content
+
+app.use(logger);
+
 
 
 const courses = [{
